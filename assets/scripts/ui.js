@@ -1,6 +1,5 @@
 const store = require('./store')
 
-
 const onRegisterSuccess = function (res) {
   // write user object to store.js
   store.user = res.user
@@ -14,7 +13,17 @@ const onRegisterFailure = function () {
   console.log('Error')
 }
 
+const onLoginSuccess = function (res) {
+  $('#login-result').html('Thanks for logging in')
+  $('#login-form').hide()
+  $('#registation-form').hide()
+  console.log('Success')
+}
+
+const onLoginFailure = function (err) {
+  $('#login-result').html('There was a problem logging you in - please check your Email address and Password, and try again!')
+}
+
 module.exports = {
-  onRegisterSuccess: onRegisterSuccess,
-  onRegisterFailure: onRegisterFailure
+  onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure
 }
