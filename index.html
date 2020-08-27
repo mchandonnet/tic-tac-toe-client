@@ -15,6 +15,8 @@
     <body>
       <h1>Project One // Tic-Tac-Toe Game</h1>
 
+      <input type="button" id="btn-logout" value="logout">
+
         <section>
         <!-- 
           BEGIN placeholder for successful registration message
@@ -40,6 +42,10 @@
           <input type="password" name="credentials[password_confirmation]" id="register-confirmation">
           
           <input type="submit" name="register-submit" value="Create User">
+
+          <div>
+            <span><a href="#" id="anchor-login">Already a user?  Click here to login</a></span>
+          </div>
 
         </form>
         
@@ -70,9 +76,9 @@
           <input type="submit" name="login-submit" value="login">
 
           <div>
-            <span>Register New User</span>
+            <span><a href="#" id="anchor-register-user">Register New User</a></span>
             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-            <span>Forgot Password?</span>
+            <span><a href="#" id="anchor-forgot-pw">Forgot Password?</a></span>
           </div>
 
         </form>
@@ -105,12 +111,6 @@
           -->
 
           <input type="submit" name="change-password" value="change password">
-
-          <div>
-            <span>Register New User</span>
-            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-            <span>Forgot Password?</span>
-          </div>
 
         </form>
 
