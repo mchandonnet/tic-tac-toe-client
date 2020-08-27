@@ -14,10 +14,8 @@
     </head>
     <body>
       <h1>Project One // Tic-Tac-Toe Game</h1>
-      
 
-      <section>
-
+        <section>
         <!-- 
           BEGIN placeholder for successful registration message
           Used in testing - delete for production
@@ -70,6 +68,43 @@
           <input type="password" name="credentials[password]" id="login-password">
           
           <input type="submit" name="login-submit" value="login">
+
+          <div>
+            <span>Register New User</span>
+            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            <span>Forgot Password?</span>
+          </div>
+
+        </form>
+
+
+
+        <!-- 
+          BEGIN placeholder for successful login message
+          Used in testing - delete for production
+        -->
+        <p id="change-password-result"></p>
+        <!-- 
+          END placeholder for successful Login message
+          Used in testing - delete for production
+        -->
+
+
+        <form name="change-password-form" id="change-password-form">
+          <h3>Change Password</h3>
+
+          <label for="old-password">Old Password:</label>
+          <input type="password" name="passwords[old]" id="old-password">
+
+          <label for="new-password">New Password:</label>
+          <input type="password" name="passwords[new]" id="new-password">
+          
+          <!--
+          <label for="confirm-password">Confirm new Password:</label>
+          <input type="password" name="confirm-password" id="confirm-password">
+          -->
+
+          <input type="submit" name="change-password" value="change password">
 
           <div>
             <span>Register New User</span>

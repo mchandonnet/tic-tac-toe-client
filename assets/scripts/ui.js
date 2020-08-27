@@ -5,6 +5,7 @@ const onRegisterSuccess = function (res) {
   store.user = res.user
   $('#registration-result').html(`Thanks for registering ${store.user.email}`)
   $('#register-form').hide()
+  $('#login-form').hide()
   console.log('Success')
 }
 
@@ -14,16 +15,25 @@ const onRegisterFailure = function () {
 }
 
 const onLoginSuccess = function (res) {
+  store.user = res.user
   $('#login-result').html('Thanks for logging in')
   $('#login-form').hide()
-  $('#registation-form').hide()
+  $('#register-form').hide()
   console.log('Success')
 }
 
-const onLoginFailure = function (err) {
+const onLoginFailure = function () {
   $('#login-result').html('There was a problem logging you in - please check your Email address and Password, and try again!')
 }
 
+const onChangePasswordSuccess = function () {
+  $('#change-password-result').html('You have successfully chaned your password')
+}
+
+const onChangePasswordFailure = function () {
+  $('#change-password-result').html('There was a problem changing your password - please try again!')
+}
+
 module.exports = {
-  onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure
+  onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure, onChangePasswordSuccess, onChangePasswordFailure
 }

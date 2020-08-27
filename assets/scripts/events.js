@@ -34,7 +34,21 @@ const onSignIn = function (event) {
     .catch(ui.onLoginFailure)
 }
 
+const onChangePassword = function (event) {
+  // prevent default action for the event
+  event.preventDefault()
+  // get the data from the event object
+  const form = event.target
+  // use getFormFields() to get the data from the form
+  const data = getFormFields(form)
+  // calling a function to change the users password
+  api.changePassword(data)
+  // handle SUCCESSFUL response
+    .then(ui.onChangePasswordSuccess)
+  // handle ERROR response
+    .catch(ui.onChangePasswordFailure)
+}
+
 module.exports = {
-  onRegisterUser: onRegisterUser,
-  onSignIn: onSignIn
+  onRegisterUser, onSignIn, onChangePassword
 }

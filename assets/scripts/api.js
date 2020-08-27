@@ -1,5 +1,6 @@
 
 const config = require('./config')
+const store = require('./store')
 
 const signUp = function (data) {
   // make an ajax call to the API to add the user
@@ -18,7 +19,17 @@ const signIn = function (data) {
   })
 }
 
+const changePassword = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/change-password',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
-  signUp: signUp,
-  signIn: signIn
+  signUp, signIn, changePassword
 }
