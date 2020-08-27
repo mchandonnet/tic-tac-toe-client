@@ -3,6 +3,7 @@
     <head>
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -12,6 +13,39 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Project One // Tic-Tac-Toe Game</h1>
+
+      <section>
+
+        <!-- 
+          BEGIN placeholder for successful registration message
+          Used in testing - delete for production
+        -->
+        <p id="registration-result"></p>
+        <!-- 
+          END placeholder for successful registration message
+          Used in testing - delete for production
+        -->
+
+
+        <form name="register-form" id="register-form">
+          <h3>Register User</h3>
+
+          <label for="register-email">Email Address:</label>
+          <input type="email" placeholder="example.domain.com" name="credentials[email]" id="register-email">
+          
+          <label for="register-password">Password:</label>
+          <input type="password" name="credentials[password]" id="register-password">
+          
+          <label for="register-confirm">Confirm Password:</label>
+          <input type="password" name="credentials[password_confirmation]" id="register-confirmation">
+          
+          <input type="submit" name="register-submit" value="Create User">
+
+        </form>
+        
+      </section>
+
+
     </body>
 </html>
