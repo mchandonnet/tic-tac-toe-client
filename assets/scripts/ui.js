@@ -1,6 +1,5 @@
 const store = require('./store')
 
-
 const onRegisterSuccess = function (res) {
   store.user = res.user
   $('#login-form').trigger('reset')
@@ -21,7 +20,7 @@ const onLoginSuccess = function (res) {
   $('#login-form').trigger('reset')
   $('#login-form').hide()
   $('#register-form').hide()
-
+  $('#games').show()
 }
 
 const onLoginFailure = function () {
@@ -39,12 +38,39 @@ const onChangePasswordFailure = function () {
 const onLogoutSuccess = function () {
   $('#login-form').show()
   $('#btn-logout').toggle()
+  $('#list-of-games').toggle()
 }
 
 const onLogoutFailure = function () {
   console.log("Logout FAILURE")
 }
 
+const onNewGameSuccess = function (res) {
+  console.log('Promise Success' + res)
+}
+
+const onNewGameFailure = function (err) {
+  console.log('Promise Failure' + err)
+}
+
+const onShowGamesSuccess = function (res) {
+  let gamesHTML = ''
+  res.games.forEach(function (game) { 
+    const gameHTML = (`
+    <p>${game.updatedAt}</p>
+    <p>${game._id}</p>
+    <p>${game.cells}</p>
+  `)
+    gamesHTML += gameHTML
+  })
+  $('#list-of-games').html(gamesHTML)
+}
+
+const onShowGamesFailure = function (err) {
+  console.log('Promise Failure' + err)
+}
+
+
 module.exports = {
-  onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure, onChangePasswordSuccess, onChangePasswordFailure, onLogoutSuccess, onLogoutFailure
+  onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure, onChangePasswordSuccess, onChangePasswordFailure, onLogoutSuccess, onLogoutFailure, onNewGameSuccess, onNewGameFailure, onShowGamesSuccess, onShowGamesFailure
 }

@@ -11,6 +11,32 @@
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+      <!--- This style block was added here to prevent the flickering of hidden content when the page loads-->
+      <style>
+        #register-form {
+          display: none;
+          opacity: 1;
+        }
+
+        #change-password-form {
+          display: none;
+          opacity: 1;
+        }
+
+        #btn-logout {
+          display: none;
+          opacity: 1;
+        }
+
+        #games {
+          display: none;
+          opacity: 1;
+        }
+      </style>
+
+
+
     </head>
     <body>
       <h1>Project One // Tic-Tac-Toe Game</h1>
@@ -114,6 +140,16 @@
 
         </form>
 
+
+        
+        <!-- Begin Game Board Basics-->
+        <section id="games">
+          <input type="button" id="btn-new-game" value="Start a new Game">
+          <input type="button" id="btn-show-games" value="Show All Games">
+          <p>Here is a list of all your games:</p>
+          <!-- placeholder for list of games -->
+          <ul id="list-of-games"></ul>
+        </section>
 
         
 
