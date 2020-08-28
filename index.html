@@ -16,22 +16,22 @@
       <style>
         #register-form {
           display: none;
-          opacity: 1;
         }
 
         #change-password-form {
           display: none;
-          opacity: 1;
         }
 
-        #btn-logout {
+        #control-buttons {
           display: none;
-          opacity: 1;
         }
 
         #games {
           display: none;
-          opacity: 1;
+        }
+
+        #tic-tac-toe-board {
+          display: none;
         }
       </style>
 
@@ -41,111 +41,214 @@
     <body>
       <h1>Project One // Tic-Tac-Toe Game</h1>
 
-      <input type="button" id="btn-logout" value="logout">
+      <section id="control-buttons-section">
 
-        <section>
-        <!-- 
-          BEGIN placeholder for successful registration message
-          Used in testing - delete for production
-        -->
-        <p id="registration-result"></p>
-        <!-- 
-          END placeholder for successful registration message
-          Used in testing - delete for production
-        -->
+          <div id="control-buttons">      
+            <input type="button" id="btn-logout" value="logout">
+            <input type="button" id="btn-change-password" value="change password">
+            <input type="button" id="btn-new-game" value="Start a new Game">
+          </div id="control-buttons">
 
+      </section>
 
+  
+
+      <!-- BEGIN REGISTER FORM SECTION -->
+      <section id="register-section">
+      
         <form name="register-form" id="register-form">
-          <h3>Register User</h3>
+          
+          <div class="container">
 
-          <label for="register-email">Email Address:</label>
-          <input type="email" placeholder="example.domain.com" name="credentials[email]" id="register-email">
-          
-          <label for="register-password">Password:</label>
-          <input type="password" name="credentials[password]" id="register-password">
-          
-          <label for="register-confirm">Confirm Password:</label>
-          <input type="password" name="credentials[password_confirmation]" id="register-confirmation">
-          
-          <input type="submit" name="register-submit" value="Create User">
+            <div class="row">
+              <div class="accent-div-top col-12"></div>
+            </div>
 
-          <div>
-            <span><a href="#" id="anchor-login">Already a user?  Click here to login</a></span>
+            <div class="row">
+              <div class="login col-12">Register User</div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="email" placeholder="example.domain.com" name="credentials[email]" id="register-email"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" name="credentials[password]" id="register-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" name="credentials[password_confirmation]" id="register-confirmation"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><p id="registration-result"></p></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="submit" name="register-submit" value="Create User"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+
+            <div class="row">
+              <div class="accent-div-bottom login col-12"><a href="#" id="anchor-login">Already a user?  Click here to login</a></div>
+            </div>
+
+
           </div>
 
         </form>
         
+
       </section>
+      <!-- END REGISTER FORM SECTION --> 
+       
+      
 
-
-
-      <!-- 
-          BEGIN placeholder for successful login message
-          Used in testing - delete for production
-        -->
-        <p id="login-result"></p>
-        <!-- 
-          END placeholder for successful Login message
-          Used in testing - delete for production
-        -->
-
-
+      <!-- BEGIN LOGIN FORM SECTION -->
+      <section id="login-secion">
         <form name="login-form" id="login-form">
-          <h3>Login</h3>
+        
+            <div class="container">
 
-          <label for="login-email">Email Address:</label>
-          <input type="email" placeholder="example.domain.com" name="credentials[email]" id="login-email">
-          
-          <label for="login-password">Password:</label>
-          <input type="password" name="credentials[password]" id="login-password">
-          
-          <input type="submit" name="login-submit" value="login">
+            <div class="row">
+              <div class="accent-div-top col-12"></div>
+            </div>
 
-          <div>
-            <span><a href="#" id="anchor-register-user">Register New User</a></span>
-            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-            <span><a href="#" id="anchor-forgot-pw">Forgot Password?</a></span>
+            <div class="row">
+              <div class="login col-12">USER LOGIN</div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="email" placeholder="example.domain.com" name="credentials[email]" id="login-email"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="password" name="credentials[password]" id="login-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><p id="login-result"></p></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="submit" name="login-submit" value="Sign In"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12">
+                <a href="#" id="anchor-forgot-pw">Forgot username -or- password?</a></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="accent-div-bottom login col-12"><a href="#" id="anchor-register-user">Click to register new user</a></div>
+            </div>
+
           </div>
 
         </form>
+      </section>
+      <!-- END LOGIN FORM SECTION -->
 
-
-
-        <!-- 
-          BEGIN placeholder for successful login message
-          Used in testing - delete for production
-        -->
-        <p id="change-password-result"></p>
-        <!-- 
-          END placeholder for successful Login message
-          Used in testing - delete for production
-        -->
-
-
+      <!-- START CHANGE PASSWORD SECTION-->
+      <section id="change-password-section">
         <form name="change-password-form" id="change-password-form">
-          <h3>Change Password</h3>
+        
+          <div class="container">
 
-          <label for="old-password">Old Password:</label>
-          <input type="password" name="passwords[old]" id="old-password">
+          <div class="row">
+            <div class="accent-div-top col-12"></div>
+          </div>
 
-          <label for="new-password">New Password:</label>
-          <input type="password" name="passwords[new]" id="new-password">
-          
-          <!--
-          <label for="confirm-password">Confirm new Password:</label>
-          <input type="password" name="confirm-password" id="confirm-password">
-          -->
+          <div class="row">
+            <div class="login col-12">CHANGE PASSWORD</div>
+          </div>
 
-          <input type="submit" name="change-password" value="change password">
+          <div class="row">
+            <div class="login col-12"><input type="password" placeholder="current password" name="passwords[old]" id="old-password"></div>
+          </div>
 
-        </form>
+          <div class="row">
+            <div class="login col-12"><input type="password" placeholder="new password" name="passwords[new]" id="new-password"></div>
+          </div>
+
+          <div class="row">
+            <div class="login col-12"><p id="change-password-result"></p></div>
+          </div>
+
+          <div class="row">
+            <div class="login col-12"><input type="submit" name="change-password" value="change password"></div>
+          </div>
+
+          <div class="row">
+            <div class="login col-12"></div>
+          </div>
+
+          <div class="row">
+            <div class="accent-div-bottom login col-12"><a href="#" id="back-to-game">Click to return to the game</a></div>
+          </div>
+
+        </div>
+
+      </form>
+
+      </section>
+      <!-- END CHANGE PASSWORD SECTION -->
+        
 
 
         
         <!-- Begin Game Board Basics-->
+        <section>
+          <div class="container" id="tic-tac-toe-board">
+
+            <div class="row">
+              <div class="col-12"><p id="display-game-id"></p></div>
+            </div>
+            
+            <div class="row">
+                <div class="game-board-divs top-left col-4" id="0"><p id="contents-0"></p></div>
+                <div class="game-board-divs top-mid col-4" id="1"><p id="contents-1"></div>
+                <div class="game-board-divs top-right col-4" id="2"><p id="contents-2"></div>
+            </div>
+
+            <div class="row">
+              <div class="game-board-divs mid-left col-4" id="3"><p id="contents-3"></div>
+              <div class="game-board-divs col-4" id="4"><p id="contents-4"></div>
+              <div class="game-board-divs mid-right col-4" id="5"><p id="contents-5"></div>
+            </div>
+
+            <div class="row">
+              <div class="game-board-divs bot-left col-4" id="6"><p id="contents-6"></p></div>
+              <div class="game-board-divs bot-mid col-4" id="7"><p id="contents-7"></p></div>
+              <div class="game-board-divs bot-right col-4" id="8"><p id="contents-8"></p></div>
+            </div>
+
+          </div>
+        </section>
+
+
+
+        
+        
         <section id="games">
-          <input type="button" id="btn-new-game" value="Start a new Game">
           <input type="button" id="btn-show-games" value="Show All Games">
+           
+
+
+          
           <p>Here is a list of all your games:</p>
           <!-- placeholder for list of games -->
           <ul id="list-of-games"></ul>

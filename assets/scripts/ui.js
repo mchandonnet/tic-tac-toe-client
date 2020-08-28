@@ -1,4 +1,8 @@
 const store = require('./store')
+const app = require('./app')
+const gameplay = require('./gameplay')
+
+let currentGame
 
 const onRegisterSuccess = function (res) {
   store.user = res.user
@@ -16,19 +20,27 @@ const onRegisterFailure = function () {
 
 const onLoginSuccess = function (res) {
   store.user = res.user
-  $('#btn-logout').toggle()
+  $('#control-buttons').show()
   $('#login-form').trigger('reset')
   $('#login-form').hide()
   $('#register-form').hide()
-  $('#games').show()
+  // enable this later!
+  // $('#games').show()
+  // $('#tic-tac-toe-board').show()
+
 }
 
 const onLoginFailure = function () {
-  $('#login-result').html('There was a problem logging you in - please check your Email address and Password, and try again!')
+  $('#login-result').html('Login failed - check your email address and password, and try again!')
 }
 
 const onChangePasswordSuccess = function () {
-  $('#change-password-result').html('You have successfully chaned your password')
+  $('#change-password-result').html('You have successfully chaned your password and will be redirected back to the game')
+  setTimeout(() => {
+    $('#btn-logout').show()
+    $('#btn-change-password').show()
+    $('#games').show()
+  }, 5000)
 }
 
 const onChangePasswordFailure = function () {
@@ -37,8 +49,10 @@ const onChangePasswordFailure = function () {
 
 const onLogoutSuccess = function () {
   $('#login-form').show()
-  $('#btn-logout').toggle()
-  $('#list-of-games').toggle()
+  $('#control-buttons').hide()
+  $('#tic-tac-toe-board').hide()
+  $('#games').hide()
+  $('#change-password-form').hide()
 }
 
 const onLogoutFailure = function () {
@@ -46,7 +60,10 @@ const onLogoutFailure = function () {
 }
 
 const onNewGameSuccess = function (res) {
-  console.log('Promise Success' + res)
+  store.currentGame = res.game._id
+  $('#tic-tac-toe-board').show()
+  
+  
 }
 
 const onNewGameFailure = function (err) {
@@ -69,7 +86,6 @@ const onShowGamesSuccess = function (res) {
 const onShowGamesFailure = function (err) {
   console.log('Promise Failure' + err)
 }
-
 
 module.exports = {
   onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure, onChangePasswordSuccess, onChangePasswordFailure, onLogoutSuccess, onLogoutFailure, onNewGameSuccess, onNewGameFailure, onShowGamesSuccess, onShowGamesFailure

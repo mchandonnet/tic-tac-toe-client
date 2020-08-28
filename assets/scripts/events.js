@@ -4,6 +4,8 @@ const getFormFields = require('./../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
+//define the value for the 
+
 const onRegisterUser = function (event) {
   // prevent the default action for the event
   event.preventDefault()
@@ -80,5 +82,10 @@ const onShowGames = function () {
 }
 
 module.exports = {
-  onRegisterUser, onSignIn, onChangePassword, onLogout, onNewGame, onShowGames
+  onRegisterUser: onRegisterUser,
+  onSignIn: onSignIn,
+  onChangePassword: onChangePassword,
+  onLogout: onLogout,
+  onNewGame: onNewGame,
+  onShowGames: onShowGames
 }
