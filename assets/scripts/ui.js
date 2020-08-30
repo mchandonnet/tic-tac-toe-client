@@ -61,9 +61,7 @@ const onLogoutFailure = function () {
 
 const onNewGameSuccess = function (res) {
   store.currentGame = res.game._id
-  $('#tic-tac-toe-board').show()
-  
-  
+  gameplay.initializeGame()
 }
 
 const onNewGameFailure = function (err) {
@@ -80,7 +78,7 @@ const onShowGamesSuccess = function (res) {
   `)
     gamesHTML += gameHTML
   })
-  $('#list-of-games').html(gamesHTML)
+  $('#list-of-games-ul').html(gamesHTML)
 }
 
 const onShowGamesFailure = function (err) {

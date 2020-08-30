@@ -5,7 +5,6 @@ const gameplay = require('./gameplay')
 
 $(() => {
   // Event listener for logout, register-form, login-form, and change-password-form
-  
   $('#register-form').on('submit', events.onRegisterUser)
   $('#login-form').on('submit', events.onSignIn)
   $('#change-password-form').on('submit', events.onChangePassword)
@@ -26,12 +25,10 @@ $(() => {
 
   // Events listeners to toggle between game page and change password page
   $('#btn-change-password').on('click', function () {
-    console.log("Change Password")
+    console.log('Change Password')
     $('#games').hide()
     $('#change-password-form').show(0)
   })
-
-
 
   // Event Listener for btn-logout, btn-change-password, btn-new-game, and btn-show-games
   $('#btn-logout').on('click', events.onLogout)
@@ -42,14 +39,4 @@ $(() => {
   for (let i = 0; i <= 8; i++) {
     $(`#${i}`).on('click', gameplay.onClickedBox)
   }
-
-  // $('#0').one('click', gameplay.onClickedBox)
-  // $('#1').one('click', gameplay.onClickedBox)
-  // $('#2').one('click', gameplay.onClickedBox)
-  // $('#3').one('click', gameplay.onClickedBox)
-  // $('#4').one('click', gameplay.onClickedBox)
-  // $('#5').one('click', gameplay.onClickedBox)
-  // $('#6').one('click', gameplay.onClickedBox)
-  // $('#7').one('click', gameplay.onClickedBox)
-  // $('#8').one('click', gameplay.onClickedBox)
 })

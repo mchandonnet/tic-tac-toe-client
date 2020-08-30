@@ -3,6 +3,7 @@
 const getFormFields = require('./../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+const gameplay = require('./gameplay')
 
 //define the value for the 
 
@@ -64,13 +65,13 @@ const onLogout = function () {
 }
 
 const onNewGame = function () {
-  // api.newGame()
   api.apiCall('/games', 'POST', '{}', true)
   // handle SUCCESSFUL response
     .then(ui.onNewGameSuccess)
   // handle ERRROR response
     .catch(ui.onNewGameFailure)
 }
+
 
 const onShowGames = function () {
   // api.showGames()

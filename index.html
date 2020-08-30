@@ -4,6 +4,8 @@
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       
+      <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -39,14 +41,15 @@
 
     </head>
     <body>
-      <h1>Project One // Tic-Tac-Toe Game</h1>
-
-      <section id="control-buttons-section">
+      <h1>Project One // Tic-Tac-Toe Game</h1>     
 
           <div id="control-buttons">      
             <input type="button" id="btn-logout" value="logout">
             <input type="button" id="btn-change-password" value="change password">
             <input type="button" id="btn-new-game" value="Start a new Game">
+            <!-- This button is for a stretch goal! 
+            <input type="button" id="btn-show-games" value="Show All Games">
+            -->
           </div id="control-buttons">
 
       </section>
@@ -213,10 +216,6 @@
         <!-- Begin Game Board Basics-->
         <section>
           <div class="container" id="tic-tac-toe-board">
-
-            <div class="row">
-              <div class="col-12"><p id="display-game-id"></p></div>
-            </div>
             
             <div class="row">
                 <div class="game-board-divs top-left col-4" id="0"><p id="contents-0"></p></div>
@@ -236,22 +235,57 @@
               <div class="game-board-divs bot-right col-4" id="8"><p id="contents-8"></p></div>
             </div>
 
+            <div class="row">
+              <div class="col-12"></div>
+            </div>
+
+            <div class="row">
+              <div id="game-alert-text" class="col-12 game-board-divs game-winner-text"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-12"></div>
+            </div>
+
           </div>
+
+          <!--- Leave the DIV here for formatting so that you don't need to log inand out each time-->
+          <div>
+            <div class="container scoreboard-container">
+              
+              <div class="row">
+                <div class="col-12">Scoreboard</div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">X</div>
+                <div class="col-4">v.</div>
+                <div class="col-4">O</div>
+              </div>
+
+              <div class="row">
+                <div class="col-4">99</div>
+                <div class="col-4"></div>
+                <div class="col-4">54</div>
+              </div>
+
+            </div>
+          </div>
+
         </section>
 
 
 
         
         
-        <section id="games">
-          <input type="button" id="btn-show-games" value="Show All Games">
-           
-
-
-          
-          <p>Here is a list of all your games:</p>
-          <!-- placeholder for list of games -->
-          <ul id="list-of-games"></ul>
+        <section>
+          <div class="row" id="games">
+            <div class="col-12">Here is a list of all your games:</div>
+            
+            <div class="col-12">
+              <ul id="list-of-games-ul"></ul>
+            </div>
+          </div>
         </section>
 
         

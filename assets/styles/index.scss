@@ -1,8 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .container {
   max-width: 500px;
-  margin: 250px auto;
+  margin: 50px auto;
+
+  &.scoreboard {
+    background-color: red;
+    border: 1px solid black;
+  }
 }
 
 .login {
@@ -37,6 +46,9 @@
 .game-board-divs {
   height: 160px;
   border: 1px solid black;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  font-size: 125px;
 
   &:hover {
     background-color: #ededed;
@@ -76,6 +88,14 @@
   &.bot-right {
     border-right: 0px;
     border-bottom: 0px;
+  }
+
+  &.game-winner-text {
+    border: 0px;
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: center;
   }
 
 }
