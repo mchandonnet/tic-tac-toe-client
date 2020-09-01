@@ -38,7 +38,7 @@ const initializeGame = function () {
   for (let i = 0; i <= 8; i++) {
     $(`#contents-${i}`).html('')
   }
-  $('#game-alert-text').html('Witing for X to make a play!')
+  $('#game-alert-text').html('Waiting for X to make a play!')
 }
 
 // check to see if the array is full... this would indicate the game is over!
@@ -57,10 +57,6 @@ const calcPercentage = function (arr, total) {
   $('#x-score').html(store.record[0])
   $('#o-score').html(store.record[1])
   $('#tie-score').html(total - (arr[0] + arr[1]))
-}
-
-const showGameAlert = function (msg) {
-  console.log(msg)
 }
 
 const checkWinningCombos = function () {
@@ -82,7 +78,7 @@ const checkWinningCombos = function () {
         store.record[1]++
         return calcPercentage(store.record, store.gameNumber)
       }
-    } else if (!arrayIsFull()) {
+    } else if (!arrayIsFull() && (activeGame)) {
       // If checkFullArray returns TRUE, then the array is not full and the game is NOT over
       messageText = 'Game Over!  This game has ended in a tie!'
       activeGame = false
@@ -128,21 +124,13 @@ const onClickedBox = function () {
     activePlayer === 'X' ? activePlayer = 'O' : activePlayer = 'X'
 
     if (activeGame) {
-      messageText = `Witing for ${activePlayer} to make a play...`
+      messageText = `Waiting for ${activePlayer} to make a play...`
     }
 
     // if not, send an error
   } else if ((activeGame) && (gameBoard[event.target.id] !== '')) {
     messageText = 'Spot already take - please select another spot'
   }
-
-  // console.log('Game Number: ' + gameNumber)
-  // console.log('Active Player: ' + activePlayer)
-  // console.log('Active Game: ' + activeGame)
-  // console.log('Game Board: ' + gameBoard)
-  // console.log('Game id: ' + store.currentGame)
-  // console.log('Player Token: ' + store.user.token)
-  // console.log(store.gameNumber)
 
   $('#game-alert-text').html(messageText)
 }
@@ -151,7 +139,7 @@ const onUpdateGameSuccess = function () {
 }
 
 const onUpdateGameFailure = function () {
-  console.log('Failure')
+  $('#api-failure').html('Something went wrong with your logout request, please try again!')
 }
 
 module.exports = {

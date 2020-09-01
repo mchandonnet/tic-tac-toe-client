@@ -4,67 +4,36 @@ const events = require('./events')
 const gameplay = require('./gameplay')
 
 $(() => {
-  // Event listener for logout, register-form, login-form, and change-password-form
+  // Event listener for register-form, login-form, and change-password-form, logout, new-game and show-games
   $('#register-form').on('submit', events.onRegisterUser)
   $('#login-form').on('submit', events.onSignIn)
   $('#change-password-form').on('submit', events.onChangePassword)
+  $('#btn-logout').on('click', events.onLogout)
+  $('#btn-new-game').on('click', events.onNewGame)
+  $('#btn-show-games').on('click', events.onShowGames)
 
   // Event listener to toggle the register and login function based on user request
+  // (cha, login, reg, small, tic)
+  // events.views(false, false, false, false, false, login)
   $('#anchor-register-user').on('click', function () {
-    $('#change-password-form').trigger('reset')
-    $('#login-form').trigger('reset')
-    $('#register-form').trigger('reset')
-
-    $('#navigation').hide()
-    $('#register-form').show()
-    $('#login-form').hide()
-    $('#change-password-form').hide()
-    $('#tic-tac-toe-board').hide()
-    $('#small-games').hide()
+    events.views(false, false, true, false, false)
   })
 
   $('#anchor-login').on('click', function () {
-    $('#change-password-form').trigger('reset')
-    $('#login-form').trigger('reset')
-    $('#register-form').trigger('reset')
-
+    $('#registration-result').html('')
+    events.views(false, true, false, false, false)
     $('#navigation').hide()
-    $('#register-form').hide()
-    $('#login-form').show()
-    $('#change-password-form').hide()
-    $('#tic-tac-toe-board').hide()
-    $('#small-games').hide()
   })
 
   // Events listeners to toggle between game page and change password page
   $('#btn-change-password').on('click', function () {
-    $('#change-password-form').trigger('reset')
-    $('#login-form').trigger('reset')
-    $('#register-form').trigger('reset')
-
-    $('#register-form').hide()
-    $('#login-form').hide()
-    $('#change-password-form').show()
-    $('#tic-tac-toe-board').hide()
-    $('#small-games').hide()
+    events.views(true, false, false, false, false)
   })
 
   $('#anchor-back-to-game').on('click', function () {
-    $('#change-password-form').trigger('reset')
-    $('#login-form').trigger('reset')
-    $('#register-form').trigger('reset')
-
-    $('#register-form').hide()
-    $('#login-form').hide()
-    $('#change-password-form').hide()
-    $('#tic-tac-toe-board').show()
-    $('#small-games').hide()
+    $('#change-password-result').html('')
+    events.views(false, false, false, false, true)
   })
-
-  // Event Listener for btn-logout, btn-change-password, btn-new-game, and btn-show-games
-  $('#btn-logout').on('click', events.onLogout)
-  $('#btn-new-game').on('click', events.onNewGame)
-  $('#btn-show-games').on('click', events.onShowGames)
 
   // Event listeners for Game Board (.one() ensures that an event handler cannot be used more than once!, but was hard to reinitialize!)
   for (let i = 0; i <= 8; i++) {

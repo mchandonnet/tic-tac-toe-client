@@ -3,14 +3,48 @@
 const getFormFields = require('./../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-const gameplay = require('./gameplay')
 
-// $('#navigation').show()
-// $('#register-form').show()
-// $('#login-form').show()
-// $('#change-password-form').show()
-// $('#tic-tac-toe-board').show()
-// $('#games').show()
+const resetForms = function () {
+  $('#change-password-form').trigger('reset')
+  $('#login-form').trigger('reset')
+  $('#register-form').trigger('reset')
+}
+
+const views = function (cha, login, reg, small, tic) {
+  if (cha) {
+    $('#change-password-form').show()
+  } else {
+    $('#change-password-form').hide()
+  }
+
+  if (login) {
+    $('#login-form').show()
+  } else {
+    $('#login-form').hide()
+  }
+
+  if (reg) {
+    $('#register-form').show()
+  } else {
+    $('#register-form').hide()
+  }
+
+  if (small) {
+    $('#small-games').show()
+  } else {
+    $('#small-games').hide()
+  }
+
+  if (tic) {
+    $('#tic-tac-toe-board').show()
+  } else {
+    $('#tic-tac-toe-board').hide()
+  }
+
+  resetForms()
+  $('#api-failure').html('')
+}
+
 
 const onRegisterUser = function (event) {
   // prevent the default action for the event
@@ -45,6 +79,7 @@ const onSignIn = function (event) {
 }
 
 const onChangePassword = function (event) {
+  $('#api-failure').html('')
   // prevent default action for the event
   event.preventDefault()
   // get the data from the event object
@@ -61,6 +96,7 @@ const onChangePassword = function (event) {
 }
 
 const onLogout = function () {
+  $('#api-failure').html('')
   // api.logout()
   api.apiCall('/sign-out', 'DELETE', false, true)
   // handle SUCCESSFUL response
@@ -70,6 +106,7 @@ const onLogout = function () {
 }
 
 const onNewGame = function () {
+  $('#api-failure').html('')
   api.apiCall('/games', 'POST', '{}', true)
   // handle SUCCESSFUL response
     .then(ui.onNewGameSuccess)
@@ -77,8 +114,8 @@ const onNewGame = function () {
     .catch(ui.onNewGameFailure)
 }
 
-
 const onShowGames = function () {
+  $('#api-failure').html('')
   // api.showGames()
   api.apiCall('/games', 'GET', false, true)
   // handle SUCCESSFUL response
@@ -93,5 +130,8 @@ module.exports = {
   onChangePassword: onChangePassword,
   onLogout: onLogout,
   onNewGame: onNewGame,
-  onShowGames: onShowGames
+  onShowGames: onShowGames,
+  resetForms: resetForms,
+  views: views
+
 }

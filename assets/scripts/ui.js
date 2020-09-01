@@ -1,33 +1,34 @@
 const store = require('./store')
-const app = require('./app')
 const gameplay = require('./gameplay')
 
-let currentGame
+// let currentGame
 
 const onRegisterSuccess = function (res) {
   store.user = res.user
   // reset the login form and the registration form
   $('#login-form').trigger('reset')
   $('#register-form').trigger('reset')
-
   // display a message to the user, and redirect back to the login page after 5 seconds
-  $('#registration-result').html(`Thanks for registering ${store.user.email}.  Youare about to be redirected to the login page...`)
+  $('#registration-result').html(`Thanks for registering ${store.user.email}.  You are about to be redirected to the login page...`)
   setTimeout(function () {
     $('#register-form').hide()
     $('#login-form').show()
+    $('#registration-result').html('')
   }, 5000)
-  
+
+  // functionality for automatically logging in the user
+  // We should already have the username and password as part of the registration... what if we just call the 
 }
 
 const onRegisterFailure = function () {
   $('#registration-result').html('There was a problem registering your account - please check your Email address and Password, and try again!')
-  console.log('Error')
 }
 
 const onLoginSuccess = function (res) {
   store.user = res.user
   store.gameNumber = 0
   store.record = [0, 0, 0] // [wins, losses, ties]
+  $('#login-result').html('')
   $('#login-form').trigger('reset')
   $('#login-form').hide()
   $('#register-form').hide()
@@ -41,11 +42,18 @@ const onLoginFailure = function () {
 }
 
 const onChangePasswordSuccess = function () {
-  $('#change-password-result').html('You have successfully chaned your password and will be redirected back to the game')
+  $('#change-password-result').html('Password Changed - your will be redirected back to the game shortly...')
   setTimeout(() => {
-    $('#btn-logout').show()
-    $('#btn-change-password').show()
-    $('#games').show()
+    $('#change-password-form').trigger('reset')
+    $('#login-form').trigger('reset')
+    $('#register-form').trigger('reset')
+
+    $('#register-form').hide()
+    $('#login-form').hide()
+    $('#change-password-form').hide()
+    $('#tic-tac-toe-board').show()
+    $('#small-games').hide()
+    $('#change-password-result').html('')
   }, 5000)
 }
 
@@ -61,7 +69,6 @@ const onLogoutSuccess = function (res) {
   gameplay.activePlayer = ''
   gameplay.activeGame = false
   gameplay.gameBoard = []
-  console.log(res)
   $('#navigation').hide()
   $('#tic-tac-toe-board').hide()
   $('#games').hide()
@@ -70,7 +77,7 @@ const onLogoutSuccess = function (res) {
 }
 
 const onLogoutFailure = function () {
-  console.log("Logout FAILURE")
+  $('#api-failure').html('Something went wrong with your logout request, please try again!')
 }
 
 const onNewGameSuccess = function (res) {
@@ -78,15 +85,14 @@ const onNewGameSuccess = function (res) {
   gameplay.initializeGame()
 }
 
-const onNewGameFailure = function (err) {
-  console.log('Promise Failure' + err)
+const onNewGameFailure = function () {
+  $('#api-failure').html('Something went wrong with your request, please try again!')
 }
 
 const onShowGamesSuccess = function (res) {
-  console.log('Success')
-  // $('#change-password-form').trigger('reset')
-  // $('#login-form').trigger('reset')
-  // $('#register-form').trigger('reset')
+  $('#change-password-form').trigger('reset')
+  $('#login-form').trigger('reset')
+  $('#register-form').trigger('reset')
 
   $('#register-form').hide()
   $('#login-form').hide()
@@ -97,12 +103,12 @@ const onShowGamesSuccess = function (res) {
   let gamesHTML = ''
   gamesHTML = (`
     <div class="col-12"><br clear="all" /><br clear="all" /></div>
-    <div class="col-12">Total Games played: ${res.games.length}</div>
+    <div class="col-12">You have played: ${res.games.length} games.  Click on any game to review it - if the game is unfinished, you will be able to complete the game!</div>
     <div class="col-12"><br clear="all" /><br clear="all" /></div>
     `)
   res.games.forEach(function (game) {
     const gameHTML = (`
-    <div class='old-games col-md-3 col-12'>
+    <div class='old-games col-md-3 col-12' id="${game._id}">
       <div class="row">
         <div class="col-3" id="0"></div>
         <div class="small-game-board-divs top-left col-2" id="0">${game.cells[0]}</div>
@@ -128,7 +134,7 @@ const onShowGamesSuccess = function (res) {
       </div>
 
       <div class="row">
-        <div class="col-12 small-game-board-divs game-spacer">Delete this Game<br clear="all" /></div>
+        <div class="col-12 small-game-board-divs game-spacer"></div>
       </div>              
     </div>
   `)
@@ -138,11 +144,9 @@ const onShowGamesSuccess = function (res) {
 }
 
 const onShowGamesFailure = function () {
-  console.log('Failure')
+  $('#api-failure').html('Something went wrong with your request, please try again!')
 }
 
 module.exports = {
   onRegisterSuccess, onRegisterFailure, onLoginSuccess, onLoginFailure, onChangePasswordSuccess, onChangePasswordFailure, onLogoutSuccess, onLogoutFailure, onNewGameSuccess, onNewGameFailure, onShowGamesSuccess, onShowGamesFailure
 }
-
-
