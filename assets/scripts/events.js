@@ -10,6 +10,13 @@ const resetForms = function () {
   $('#register-form').trigger('reset')
 }
 
+const resetHTML = function () {
+  $('#registration-result').html('')
+  $('#login-result').html('')
+  $('#change-password-result').html('')
+  $('#api-failure').html('')
+}
+
 const views = function (cha, login, reg, small, tic) {
   if (cha) {
     $('#change-password-form').show()
@@ -131,5 +138,6 @@ module.exports = {
   onNewGame: onNewGame,
   onShowGames: onShowGames,
   resetForms: resetForms,
-  views: views
+  views: views,
+  resetHTML: resetHTML
 }

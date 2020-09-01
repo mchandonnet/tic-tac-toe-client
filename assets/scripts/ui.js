@@ -58,17 +58,30 @@ const onChangePasswordFailure = function () {
   $('#change-password-result').html('There was a problem changing your password - please try again!')
 }
 
-const onLogoutSuccess = function (res) {
-  store.gameNumber = 0
-  store.record = [0, 0, 0] // [wins, losses, ties]
+const clearGameBoard = function () {
+  for (let i = 0; i <= 8; i++) {
+    $(`#contents-${i}`).html('')
+  }
+
   $('#x-score').html(store.record[0])
   $('#o-score').html(store.record[1])
+  $('#x-percentage').html('')
+  $('#o-percentage').html('')
+  $('#tie-percentage').html('')
+
+  store.gameNumber = 0
+  store.record = [0, 0] // [wins, losses]
   gameplay.activePlayer = ''
   gameplay.activeGame = false
-  gameplay.gameBoard = []
+  gameplay.gameBoard = ['', '', '', '', '', '', '', '', '']
+  $('#game-alert-text').html('')
+}
+
+const onLogoutSuccess = function (res) {
+  clearGameBoard()
   $('#navigation').hide()
   $('#tic-tac-toe-board').hide()
-  $('#games').hide()
+  $('#small-games').hide()
   $('#change-password-form').hide()
   $('#login-form').show()
 }

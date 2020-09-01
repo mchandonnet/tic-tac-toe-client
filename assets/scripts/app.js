@@ -16,22 +16,36 @@ $(() => {
   // (cha, login, reg, small, tic)
   // events.views(false, false, false, false, false, login)
   $('#anchor-register-user').on('click', function () {
+    events.resetHTML()
+    events.resetForms()
     events.views(false, false, true, false, false)
   })
 
   $('#anchor-login').on('click', function () {
     $('#registration-result').html('')
+    events.resetHTML()
+    events.resetForms()
     events.views(false, true, false, false, false)
     $('#navigation').hide()
   })
 
   // Events listeners to toggle between game page and change password page
   $('#btn-change-password').on('click', function () {
+    events.resetHTML()
+    events.resetForms()
     events.views(true, false, false, false, false)
   })
 
   $('#anchor-back-to-game').on('click', function () {
     $('#change-password-result').html('')
+    events.resetHTML()
+    events.resetForms()
+    events.views(false, false, false, false, true)
+  })
+
+  $('#btn-game').on('click', function () {
+    events.resetHTML()
+    events.resetForms()
     events.views(false, false, false, false, true)
   })
 

@@ -19,6 +19,10 @@ const winningCombos = [
 ]
 
 const initializeGame = function () {
+  for (let i = 0; i <= 8; i++) {
+    $(`#contents-${i}`).html('')
+  }
+
   $('#change-password-form').trigger('reset')
   $('#login-form').trigger('reset')
   $('#register-form').trigger('reset')
@@ -27,17 +31,14 @@ const initializeGame = function () {
   $('#login-form').hide()
   $('#change-password-form').hide()
   $('#tic-tac-toe-board').show()
-  $('#games').hide()
+  $('#small-games').hide()
 
   store.gameNumber++
   activePlayer = 'X'
   activeGame = true
   // clear the array for a new game
   gameBoard = ['', '', '', '', '', '', '', '', '']
-  // clear the game board
-  for (let i = 0; i <= 8; i++) {
-    $(`#contents-${i}`).html('')
-  }
+
   $('#game-alert-text').html('Waiting for X to make a play!')
 }
 
@@ -47,16 +48,15 @@ const arrayIsFull = function () {
 }
 
 const calcPercentage = function (arr, total) {
+  $('#x-score').html(store.record[0])
+  $('#o-score').html(store.record[1])
+  $('#tie-score').html(total - (arr[0] + arr[1]))
   const xPercentage = ((arr[0] / total) * 100)
   const oPercentage = ((arr[1] / total) * 100)
   const tiePercentage = (((total - (arr[0] + arr[1])) / total) * 100)
   $('#x-percentage').html(Math.floor(xPercentage) + '%')
   $('#o-percentage').html(Math.floor(oPercentage) + '%')
   $('#tie-percentage').html(Math.floor(tiePercentage) + '%')
-
-  $('#x-score').html(store.record[0])
-  $('#o-score').html(store.record[1])
-  $('#tie-score').html(total - (arr[0] + arr[1]))
 }
 
 const checkWinningCombos = function () {
