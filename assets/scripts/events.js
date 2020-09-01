@@ -45,7 +45,6 @@ const views = function (cha, login, reg, small, tic) {
   $('#api-failure').html('')
 }
 
-
 const onRegisterUser = function (event) {
   // prevent the default action for the event
   event.preventDefault()
@@ -133,5 +132,4 @@ module.exports = {
   onShowGames: onShowGames,
   resetForms: resetForms,
   views: views
-
 }

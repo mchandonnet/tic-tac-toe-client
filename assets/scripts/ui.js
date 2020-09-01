@@ -15,9 +15,6 @@ const onRegisterSuccess = function (res) {
     $('#login-form').show()
     $('#registration-result').html('')
   }, 5000)
-
-  // functionality for automatically logging in the user
-  // We should already have the username and password as part of the registration... what if we just call the 
 }
 
 const onRegisterFailure = function () {
