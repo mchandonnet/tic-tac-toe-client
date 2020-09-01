@@ -1,4 +1,4 @@
-<img src=https://user-images.githubusercontent.com/21346239/91862876-7bf3f580-ec3c-11ea-94d6-5236f3867a9c.png width="50%" height="50%"> - Mike Chandonnet // General Assembly // SEI // Project #1
+<img src=https://user-images.githubusercontent.com/21346239/91862876-7bf3f580-ec3c-11ea-94d6-5236f3867a9c.png width="50%" height="50%"> - M. Chandonnet // GA - SEI // Project #1
 
 # Tic-Tac-Toe Game
 
@@ -27,7 +27,7 @@ Initial planning involved a Review of the the scoping and requirets documentati
 Devlopment started with creating a basic HTML shell laying out the basic views of the app.  Once the layout was complete, the focus moved to the user side of the application - User creation, user Login, and Password Changes.  Then it was on to basic game actions and reading the data that was generated from basic clicks in an effort to learn how the user interaction was going to influence the game actions.  The next step was to work on actual gameplay actions such as switching users, placing X's and O's on the gameboard, testing for wins, tracking a users record for the active session.  Finally, there were a few API calls, cleaning up some HTML and SaSS to make things look a little better, and lots and lots of testing to find and fix minor bugs, validate that all requirements were being met.
 
 
-#####The following files were created and used in this project
+##### The following files were created and used in this project
 
 + ./index.html: HTML page - presents the UI to the user
 
