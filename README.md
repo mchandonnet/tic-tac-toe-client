@@ -1,4 +1,5 @@
-<img src=https://user-images.githubusercontent.com/21346239/91862876-7bf3f580-ec3c-11ea-94d6-5236f3867a9c.png width="50%" height="50%"> - M. Chandonnet // GA - SEI // Project #1
+<img src=https://user-images.githubusercontent.com/21346239/91862876-7bf3f580-ec3c-11ea-94d6-5236f3867a9c.png width="168" height="168">
+- M. Chandonnet // GA - SEI // Project #1 -
 
 # Tic-Tac-Toe Game
 
