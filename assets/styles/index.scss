@@ -1,24 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
+$x-color: #CB5D15;
+$o-color: #1583CB;
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #ededed;
+}
+
+.nav {
+  
+  background-color: #1583CB;
+  height: 60px;
+  right: 10px;
+  text-align: right;
+
+  & li {
+    display: inline-block;
+    margin: 10px 30px 0 0;
+    list-style: none;
+    text-transform: lowercase;
+  
+    & a:link,
+    & a:visited {
+        padding-bottom: 5px;
+        font-size: 125%;
+        color: #999b99;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+        transition: border-bottom .5s;
+    }
+
+    & a:hover,
+    & a:active {
+      border-bottom: 3px solid #999b99;
+    }
+  
+  }
+
 }
 
 .container {
   max-width: 500px;
-  margin: 50px auto;
+  margin: 50px auto 10px auto;
 
-  &.scoreboard {
-    background-color: red;
+  &.scoreboard-container {
     border: 1px solid black;
+    border-radius: 15px;
   }
 }
 
 .login {
-  background-color: #429dca;
   border-left: 1px solid #429dca;
   border-right: 1px solid #429dca;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -29,12 +63,16 @@ body {
   border-top: 1px solid #429dca;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  padding: 10px;  
+  color: #ededed;
+  font-weight: bolder;
+  word-spacing: 5px;
+  letter-spacing: 2px;
+  padding: 15px;  
+  text-align: center;
 }
 
-
 .accent-div-bottom {
-  background-color: #429dca;
+  // background-color: #429dca;
   border-left: 1px solid #429dca;
   border-right: 1px solid #429dca;
   border-bottom: 1px solid #429dca;
@@ -49,9 +87,10 @@ body {
   text-align: center;
   font-family: 'Courgette', cursive;
   font-size: 125px;
+  line-height: 160px;
 
   &:hover {
-    background-color: #ededed;
+    background-color: #c0c0c0;
   }
 
   &.top-left {
@@ -90,13 +129,115 @@ body {
     border-bottom: 0px;
   }
 
-  &.game-winner-text {
-    border: 0px;
-    margin: 20px;
-    font-family: 'Roboto', sans-serif;
+}
+
+.game-alert-text {
+  height: 20px;
+  border: 0px;
+  margin: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.scoreboard {
+  padding: 5px;
+  text-align: center;
+
+  &.scoreboard-top {    
+    border-bottom: 1px solid black
+  }
+
+  &.scoreboard-header {
+    font-size: 35px;
+  }
+
+  &.score {
+    border: 1px solid black;
+    height: 75px;
+    line-height: 60px;
     font-size: 20px;
+    margin: 5px;
+  }
+
+  &.x-score {
+    color: $x-color;
+    margin: 0px 2.5px;
     text-align: center;
+  }
+
+  &.o-score {
+    color: $o-color;
+    margin: 0px 2.5px;
+    text-align: center;
+  }
+
+  &.tie-score {
+    margin: 0px 2.5px;
+    text-align: center;
+
+  }
+
+  &.perc-score {
+    color: $o-color;
+  }
+
+  &.perc {
+    font-size: 20px;
+    margin: 0px 2.5px;
   }
 
 }
 
+.small-game-board-divs {
+  height: 50px;
+  border: 1px solid black;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+  font-size: 20px;
+  line-height: 50px;
+
+  &.top-left {
+    border-top: 0px;
+    border-left: 0px;
+  }
+
+  &.top-mid {
+    border-top: 0px;
+  }
+
+  &.top-right {
+    border-top: 0px;
+    border-right: 0px;
+  }
+
+  &.mid-left {
+    border-left: 0px;
+  }
+
+  &.mid-right {
+    border-right: 0px;
+  }
+
+  &.bot-left {
+    border-left: 0px;
+    border-bottom: 0px;
+  }
+
+  &.bot-mid {
+    border-bottom: 0px;
+  }
+
+  &.bot-right {
+    border-right: 0px;
+    border-bottom: 0px;
+  }
+
+  &.game-spacer {
+    margin: 10px;
+    border: 0px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+}

@@ -11,23 +11,54 @@ $(() => {
 
   // Event listener to toggle the register and login function based on user request
   $('#anchor-register-user').on('click', function () {
-    $('#login-form').hide(0)
-    $('#register-form').show(0)
-    // $('#register-form').toggle(500)
-    // $('#login-form').toggle(500)
+    $('#change-password-form').trigger('reset')
+    $('#login-form').trigger('reset')
+    $('#register-form').trigger('reset')
+
+    $('#navigation').hide()
+    $('#register-form').show()
+    $('#login-form').hide()
+    $('#change-password-form').hide()
+    $('#tic-tac-toe-board').hide()
+    $('#small-games').hide()
   })
+
   $('#anchor-login').on('click', function () {
-    $('#register-form').hide(0)
-    $('#login-form').show(0)
-    // $('#register-form').toggle(1000)
-    // $('#login-form').toggle(1000)
+    $('#change-password-form').trigger('reset')
+    $('#login-form').trigger('reset')
+    $('#register-form').trigger('reset')
+
+    $('#navigation').hide()
+    $('#register-form').hide()
+    $('#login-form').show()
+    $('#change-password-form').hide()
+    $('#tic-tac-toe-board').hide()
+    $('#small-games').hide()
   })
 
   // Events listeners to toggle between game page and change password page
   $('#btn-change-password').on('click', function () {
-    console.log('Change Password')
-    $('#games').hide()
-    $('#change-password-form').show(0)
+    $('#change-password-form').trigger('reset')
+    $('#login-form').trigger('reset')
+    $('#register-form').trigger('reset')
+
+    $('#register-form').hide()
+    $('#login-form').hide()
+    $('#change-password-form').show()
+    $('#tic-tac-toe-board').hide()
+    $('#small-games').hide()
+  })
+
+  $('#anchor-back-to-game').on('click', function () {
+    $('#change-password-form').trigger('reset')
+    $('#login-form').trigger('reset')
+    $('#register-form').trigger('reset')
+
+    $('#register-form').hide()
+    $('#login-form').hide()
+    $('#change-password-form').hide()
+    $('#tic-tac-toe-board').show()
+    $('#small-games').hide()
   })
 
   // Event Listener for btn-logout, btn-change-password, btn-new-game, and btn-show-games

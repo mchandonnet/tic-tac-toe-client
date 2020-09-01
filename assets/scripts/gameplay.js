@@ -1,10 +1,9 @@
 const store = require('./store')
 const api = require('./api')
-const events = require('./events')
 
 // define a set of game variables that indicate the game has not started yet
-let gameNumber = 0
-let record = [0, 0] // [wins, losses]
+store.gameNumber = 0
+store.record = [0, 0] // [wins, losses]
 let activePlayer, winner, messageText
 let activeGame = false
 let gameBoard = []
@@ -20,8 +19,17 @@ const winningCombos = [
 ]
 
 const initializeGame = function () {
+  $('#change-password-form').trigger('reset')
+  $('#login-form').trigger('reset')
+  $('#register-form').trigger('reset')
+
+  $('#register-form').hide()
+  $('#login-form').hide()
+  $('#change-password-form').hide()
   $('#tic-tac-toe-board').show()
-  gameNumber++
+  $('#games').hide()
+
+  store.gameNumber++
   activePlayer = 'X'
   activeGame = true
   // clear the array for a new game
@@ -30,12 +38,29 @@ const initializeGame = function () {
   for (let i = 0; i <= 8; i++) {
     $(`#contents-${i}`).html('')
   }
-  $('#game-alert-text').html('')
+  $('#game-alert-text').html('Witing for X to make a play!')
 }
 
 // check to see if the array is full... this would indicate the game is over!
 const arrayIsFull = function () {
   return gameBoard.some(el => el === '')
+}
+
+const calcPercentage = function (arr, total) {
+  const xPercentage = ((arr[0] / total) * 100)
+  const oPercentage = ((arr[1] / total) * 100)
+  const tiePercentage = (((total - (arr[0] + arr[1])) / total) * 100)
+  $('#x-percentage').html(Math.floor(xPercentage) + '%')
+  $('#o-percentage').html(Math.floor(oPercentage) + '%')
+  $('#tie-percentage').html(Math.floor(tiePercentage) + '%')
+
+  $('#x-score').html(store.record[0])
+  $('#o-score').html(store.record[1])
+  $('#tie-score').html(total - (arr[0] + arr[1]))
+}
+
+const showGameAlert = function (msg) {
+  console.log(msg)
 }
 
 const checkWinningCombos = function () {
@@ -50,30 +75,38 @@ const checkWinningCombos = function () {
       activeGame = false
       winner = activePlayer
       messageText = `Game Over!  ${winner} has won this game!`
-      // $('#game-alert-text').html(`Game Over!  ${winner} has won this game!`)
+      if (winner === 'X') {
+        store.record[0]++
+        return calcPercentage(store.record, store.gameNumber)
+      } else if (winner === 'O') {
+        store.record[1]++
+        return calcPercentage(store.record, store.gameNumber)
+      }
     } else if (!arrayIsFull()) {
       // If checkFullArray returns TRUE, then the array is not full and the game is NOT over
       messageText = 'Game Over!  This game has ended in a tie!'
       activeGame = false
-      // $('#game-alert-text').html('Game Over!  This game has ended in a tie!')
+      return calcPercentage(store.record, store.gameNumber)
     }
   })
 }
 
 const onClickedBox = function () {
   // check that the player selected a valid space
-  // ** THe game must be active, and the space selected must be empty
+  // ** The game must be active, and the space selected must be empty
   if ((activeGame) && (gameBoard[event.target.id] === '')) {
     // Manipulate the DOM to place the active player symbol in the selected box
     gameBoard[event.target.id] = activePlayer
     // clear any previous alerts
-    messageText = ''
+
     if (activePlayer === 'X') {
       $(`#contents-${event.target.id}`).css('color', '#CB5D15')
     } else if (activePlayer === 'O') {
       $(`#contents-${event.target.id}`).css('color', '#1583CB')
     }
     $(`#contents-${event.target.id}`).html(`${activePlayer}`)
+
+    checkWinningCombos()
 
     // Create a JSON data variable to store the data passed to the API
     const url = '/games/' + store.currentGame
@@ -83,7 +116,7 @@ const onClickedBox = function () {
           index: `${event.target.id}`,
           value: `${activePlayer}`
         },
-        over: false
+        over: activeGame
       }
     }
 
@@ -92,21 +125,24 @@ const onClickedBox = function () {
       .then(onUpdateGameSuccess)
       .catch(onUpdateGameFailure)
 
-    // Check for a winner
-    checkWinningCombos()
     activePlayer === 'X' ? activePlayer = 'O' : activePlayer = 'X'
+
+    if (activeGame) {
+      messageText = `Witing for ${activePlayer} to make a play...`
+    }
 
     // if not, send an error
   } else if ((activeGame) && (gameBoard[event.target.id] !== '')) {
     messageText = 'Spot already take - please select another spot'
-    // $('#game-alert-text').html('Please select a valid spot!')
   }
 
-  console.log('Game Number: ' + gameNumber)
-  console.log('Active Player: ' + activePlayer)
-  console.log('Active Game: ' + activeGame)
-  console.log('Game Board: ' + gameBoard)
-  console.log('Game id: ' + store.currentGame)
+  // console.log('Game Number: ' + gameNumber)
+  // console.log('Active Player: ' + activePlayer)
+  // console.log('Active Game: ' + activeGame)
+  // console.log('Game Board: ' + gameBoard)
+  // console.log('Game id: ' + store.currentGame)
+  // console.log('Player Token: ' + store.user.token)
+  // console.log(store.gameNumber)
 
   $('#game-alert-text').html(messageText)
 }

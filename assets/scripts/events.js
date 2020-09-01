@@ -5,7 +5,12 @@ const api = require('./api')
 const ui = require('./ui')
 const gameplay = require('./gameplay')
 
-//define the value for the 
+// $('#navigation').show()
+// $('#register-form').show()
+// $('#login-form').show()
+// $('#change-password-form').show()
+// $('#tic-tac-toe-board').show()
+// $('#games').show()
 
 const onRegisterUser = function (event) {
   // prevent the default action for the event

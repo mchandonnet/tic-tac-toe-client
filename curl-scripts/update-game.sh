@@ -1,8 +1,8 @@
 
-curl "https://tic-tac-toe-api-development.herokuapp.com/games/5f495d40e123ff001748bfa0" \
+curl "https://tic-tac-toe-api-development.herokuapp.com/games/5f4c433d8831c9001787f8e3" \
   --include \
   --request PATCH \
-  --header "Authorization: Token token=cd4fcb005539268dc096f3f1cf9111fd" \
+  --header "Authorization: Token token=09a486089f665f739ce90451e1c6c120" \
   --header "Content-Type: application/json" \
   --data '{
     "game": {

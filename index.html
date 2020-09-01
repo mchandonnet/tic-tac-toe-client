@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>SEI Project 1 // Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       
       <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
@@ -15,7 +15,12 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 
       <!--- This style block was added here to prevent the flickering of hidden content when the page loads-->
-      <style>
+     
+     <style>
+        #navigation {
+          display: none;
+        }
+
         #register-form {
           display: none;
         }
@@ -24,51 +29,45 @@
           display: none;
         }
 
-        #control-buttons {
+        #tic-tac-toe-board {
           display: none;
         }
 
         #games {
           display: none;
-        }
-
-        #tic-tac-toe-board {
-          display: none;
-        }
+        }        
       </style>
-
-
-
     </head>
+
+    
     <body>
-      <h1>Project One // Tic-Tac-Toe Game</h1>     
-
-          <div id="control-buttons">      
-            <input type="button" id="btn-logout" value="logout">
-            <input type="button" id="btn-change-password" value="change password">
-            <input type="button" id="btn-new-game" value="Start a new Game">
-            <!-- This button is for a stretch goal! 
-            <input type="button" id="btn-show-games" value="Show All Games">
-            -->
-          </div id="control-buttons">
-
-      </section>
-
+      
+      <!-- Being Navigation section -->
+      <nav id="navigation">
+        <div class="row nav">
+          <div class="col-12">
+            <ul>              
+              <li><a href="#" id="btn-new-game">new game</a></li>
+              <li><a href="#" id="btn-show-games">show all games</a></li>
+              <li><a href="#" id="btn-change-password">change password</a></li>
+              <li><a href="#" id="btn-logout">logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
   
 
       <!-- BEGIN REGISTER FORM SECTION -->
-      <section id="register-section">
-      
-        <form name="register-form" id="register-form">
-          
+      <section id="register-section">      
+        <form name="register-form" id="register-form">          
           <div class="container">
 
             <div class="row">
-              <div class="accent-div-top col-12"></div>
+              <div class="accent-div-top col-12">Register User</div>
             </div>
 
             <div class="row">
-              <div class="login col-12">Register User</div>
+              <div class="login col-12"></div>
             </div>
 
             <div class="row">
@@ -76,11 +75,11 @@
             </div>
 
             <div class="row">
-              <div class="login col-12"><input type="password" name="credentials[password]" id="register-password"></div>
+              <div class="login col-12"><input type="password" placeholder="password" name="credentials[password]" id="register-password"></div>
             </div>
 
             <div class="row">
-              <div class="login col-12"><input type="password" name="credentials[password_confirmation]" id="register-confirmation"></div>
+              <div class="login col-12"><input type="password" placeholder="confirm password" name="credentials[password_confirmation]" id="register-confirmation"></div>
             </div>
 
             <div class="row">
@@ -106,10 +105,7 @@
 
 
           </div>
-
-        </form>
-        
-
+        </form> 
       </section>
       <!-- END REGISTER FORM SECTION --> 
        
@@ -122,11 +118,11 @@
             <div class="container">
 
             <div class="row">
-              <div class="accent-div-top col-12"></div>
+              <div class="accent-div-top col-12">User login</div>
             </div>
 
             <div class="row">
-              <div class="login col-12">USER LOGIN</div>
+              <div class="login col-12"></div>
             </div>
 
             <div class="row">
@@ -147,7 +143,7 @@
 
             <div class="row">
               <div class="login col-12">
-                <a href="#" id="anchor-forgot-pw">Forgot username -or- password?</a></span>
+                <a href="#" id="anchor-forgot-pw"><!-- Forgot username -or- password? --></a></span>
               </div>
             </div>
 
@@ -165,131 +161,158 @@
       </section>
       <!-- END LOGIN FORM SECTION -->
 
+      
       <!-- START CHANGE PASSWORD SECTION-->
       <section id="change-password-section">
-        <form name="change-password-form" id="change-password-form">
-        
+        <form name="change-password-form" id="change-password-form">        
           <div class="container">
 
-          <div class="row">
-            <div class="accent-div-top col-12"></div>
+            <div class="row">
+              <div class="accent-div-top col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12">CHANGE PASSWORD</div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="current password" name="passwords[old]" id="old-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="new password" name="passwords[new]" id="new-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><p id="change-password-result"></p></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="submit" name="change-password" value="change password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="accent-div-bottom login col-12"><a href="#" id="anchor-back-to-game">Click to return to the game</a></div>
+            </div>
+
           </div>
-
-          <div class="row">
-            <div class="login col-12">CHANGE PASSWORD</div>
-          </div>
-
-          <div class="row">
-            <div class="login col-12"><input type="password" placeholder="current password" name="passwords[old]" id="old-password"></div>
-          </div>
-
-          <div class="row">
-            <div class="login col-12"><input type="password" placeholder="new password" name="passwords[new]" id="new-password"></div>
-          </div>
-
-          <div class="row">
-            <div class="login col-12"><p id="change-password-result"></p></div>
-          </div>
-
-          <div class="row">
-            <div class="login col-12"><input type="submit" name="change-password" value="change password"></div>
-          </div>
-
-          <div class="row">
-            <div class="login col-12"></div>
-          </div>
-
-          <div class="row">
-            <div class="accent-div-bottom login col-12"><a href="#" id="back-to-game">Click to return to the game</a></div>
-          </div>
-
-        </div>
-
-      </form>
-
+        </form>
       </section>
       <!-- END CHANGE PASSWORD SECTION -->
         
 
 
         
-        <!-- Begin Game Board Basics-->
-        <section>
-          <div class="container" id="tic-tac-toe-board">
+      <!-- Begin Game Board -->
+      <section id="game-board">
+        
+        <div class="container" id="tic-tac-toe-board">
+          
+          <div class="row">
+              <div class="game-board-divs top-left col-4" id="0"><p id="contents-0"></p></div>
+              <div class="game-board-divs top-mid col-4" id="1"><p id="contents-1"></div>
+              <div class="game-board-divs top-right col-4" id="2"><p id="contents-2"></div>
+          </div>
+
+          <div class="row">
+            <div class="game-board-divs mid-left col-4" id="3"><p id="contents-3"></div>
+            <div class="game-board-divs col-4" id="4"><p id="contents-4"></div>
+            <div class="game-board-divs mid-right col-4" id="5"><p id="contents-5"></div>
+          </div>
+
+          <div class="row">
+            <div class="game-board-divs bot-left col-4" id="6"><p id="contents-6"></p></div>
+            <div class="game-board-divs bot-mid col-4" id="7"><p id="contents-7"></p></div>
+            <div class="game-board-divs bot-right col-4" id="8"><p id="contents-8"></p></div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 game-alert-text" id="game-alert-text" class="col-12">Click new game to start...</div>
+          </div>
+          
+
+          <div class="container scoreboard-container" id="scoreboard-section">
+        
+            <div class="row">
+              <div class="col-12 scoreboard scoreboard-top">Scoreboard</div>
+            </div>            
+
+            <div class="row">
+              <div class="col-3 scoreboard scoreboard-header"></div>
+              <div class="col-2 scoreboard scoreboard-header x-score">X</div>
+              <div class="col-2 scoreboard scoreboard-header o-score">O</div>
+              <div class="col-2 scoreboard scoreboard-header tie-score">Tie</div>
+              <div class="col-3 scoreboard scoreboard-header"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-3 scoreboard"></div>
+              <div class="col-2 scoreboard score" id="x-score">--</div>
+              <div class="col-2 scoreboard score" id="o-score">--</div>
+              <div class="col-2 scoreboard score" id="tie-score">--</div>
+              <div class="col-3 scoreboard"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-3 scoreboard scoreboard-header"></div>
+              <div class="col-2 scoreboard scoreboard-header perc" id="x-percentage">--</div>
+              <div class="col-2 scoreboard scoreboard-header perc" id="o-percentage">--</div>
+              <div class="col-2 scoreboard scoreboard-header perc" id="tie-percentage">--</div>
+              <div class="col-3 scoreboard scoreboard-header"></div>
+            </div>
+
+            <div class="row">
+              <div class="scoreboard scoreboard-spacer"></div>
+            </div>
             
-            <div class="row">
-                <div class="game-board-divs top-left col-4" id="0"><p id="contents-0"></p></div>
-                <div class="game-board-divs top-mid col-4" id="1"><p id="contents-1"></div>
-                <div class="game-board-divs top-right col-4" id="2"><p id="contents-2"></div>
             </div>
 
-            <div class="row">
-              <div class="game-board-divs mid-left col-4" id="3"><p id="contents-3"></div>
-              <div class="game-board-divs col-4" id="4"><p id="contents-4"></div>
-              <div class="game-board-divs mid-right col-4" id="5"><p id="contents-5"></div>
-            </div>
+          </div>         
 
-            <div class="row">
-              <div class="game-board-divs bot-left col-4" id="6"><p id="contents-6"></p></div>
-              <div class="game-board-divs bot-mid col-4" id="7"><p id="contents-7"></p></div>
-              <div class="game-board-divs bot-right col-4" id="8"><p id="contents-8"></p></div>
-            </div>
-
-            <div class="row">
-              <div class="col-12"></div>
-            </div>
-
-            <div class="row">
-              <div id="game-alert-text" class="col-12 game-board-divs game-winner-text"></div>
-            </div>
-
-            <div class="row">
-              <div class="col-12"></div>
-            </div>
-
-          </div>
-
-          <!--- Leave the DIV here for formatting so that you don't need to log inand out each time-->
-          <div>
-            <div class="container scoreboard-container">
-              
-              <div class="row">
-                <div class="col-12">Scoreboard</div>
-              </div>
-
-              <div class="row">
-                <div class="col-4">X</div>
-                <div class="col-4">v.</div>
-                <div class="col-4">O</div>
-              </div>
-
-              <div class="row">
-                <div class="col-4">99</div>
-                <div class="col-4"></div>
-                <div class="col-4">54</div>
-              </div>
-
-            </div>
-          </div>
-
-        </section>
-
+      </section>
+      <!-- END Game Board -->
 
 
         
-        
-        <section>
-          <div class="row" id="games">
-            <div class="col-12">Here is a list of all your games:</div>
-            
+      <!-- BEGIN section for displaying Old Games-->
+      <section id="old-games">
+        <div>
+
+          <div class="row">
             <div class="col-12">
-              <ul id="list-of-games-ul"></ul>
+
+              <div class="row" id="small-games"></div>
+                
             </div>
           </div>
-        </section>
+
+        </div>
+      </section>
+      <!-- END section for displaying Old Games-->
 
         
+
+
+
+
 
 
     </body>
 </html>
+
+
+
+<!--
+  <div class="col-4" style="display: flex;">
+        <p>${game.updatedAt}</p>
+        <p>${game._id}</p>
+        <p>${game.cells}</p>
+        <p>${game.over}</p>
+    </div>
+-->
+
+
