@@ -85,6 +85,9 @@ const checkWinningCombos = function () {
       store.activeGame = false
       return calcPercentage(store.record, store.gameNumber)
     }
+
+    $('#game-alert-text').html(messageText)
+
   })
 }
 
@@ -123,6 +126,7 @@ const onClickedBox = function () {
       .catch(onUpdateGameFailure)
 
     store.activePlayer === 'X' ? store.activePlayer = 'O' : store.activePlayer = 'X'
+
     if (store.activeGame) {
       messageText = `Waiting for ${store.activePlayer} to make a play...`
       $('#game-alert-text').html(messageText)
