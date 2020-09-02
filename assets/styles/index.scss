@@ -40,6 +40,27 @@ body {
 
 }
 
+
+#navigation {
+  display: none;
+}
+
+#register-form {
+  display: none;
+}
+
+#change-password-form {
+  display: none;
+}
+
+#tic-tac-toe-board {
+  display: none;
+}
+
+#games {
+  display: none;
+}
+
 .container {
   max-width: 500px;
   margin: 30px auto 10px auto;
@@ -241,4 +262,8 @@ body {
     text-align: center;
   }
 
+}
+
+#loadOverlay {
+  display: none;
 }
