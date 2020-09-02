@@ -102,7 +102,6 @@ const onChangePassword = function (event) {
 }
 
 const onLogout = function () {
-  $('#api-failure').html('')
   // api.logout()
   api.apiCall('/sign-out', 'DELETE', false, true)
   // handle SUCCESSFUL response

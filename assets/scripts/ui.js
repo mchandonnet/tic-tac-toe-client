@@ -24,7 +24,8 @@ const onRegisterFailure = function () {
 const onLoginSuccess = function (res) {
   store.user = res.user
   store.gameNumber = 0
-  store.record = [0, 0, 0] // [wins, losses, ties]
+  store.gameBoard = ['', '', '', '', '', '', '', '', '']
+  store.record = [0, 0] // [wins, losses, ties]
   $('#login-result').html('')
   $('#login-form').trigger('reset')
   $('#login-form').hide()
@@ -62,19 +63,20 @@ const clearGameBoard = function () {
   for (let i = 0; i <= 8; i++) {
     $(`#contents-${i}`).html('')
   }
+  store.activeGame = false
+  store.activePlayer = ''
+  store.currentGame = ''
+  store.gameBoard = ['', '', '', '', '', '', '', '', '']
+  store.gameNumber = 0
+  store.record = [0, 0] // [wins, losses]
 
   $('#x-score').html(store.record[0])
   $('#o-score').html(store.record[1])
+  $('#tie-score').html('0')
   $('#x-percentage').html('')
   $('#o-percentage').html('')
   $('#tie-percentage').html('')
-
-  store.gameNumber = 0
-  store.record = [0, 0] // [wins, losses]
-  gameplay.activePlayer = ''
-  gameplay.activeGame = false
-  gameplay.gameBoard = ['', '', '', '', '', '', '', '', '']
-  $('#game-alert-text').html('')
+  $('#game-alert-text').html('Click new game to start...')
 }
 
 const onLogoutSuccess = function (res) {

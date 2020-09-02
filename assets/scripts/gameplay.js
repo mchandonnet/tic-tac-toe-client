@@ -4,9 +4,10 @@ const api = require('./api')
 // define a set of game variables that indicate the game has not started yet
 store.gameNumber = 0
 store.record = [0, 0] // [wins, losses]
-let activePlayer, winner, messageText
-let activeGame = false
-let gameBoard = []
+store.activePlayer = ''
+let winner, messageText
+store.activeGame = false
+store.gameBoard = []
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -34,17 +35,17 @@ const initializeGame = function () {
   $('#small-games').hide()
 
   store.gameNumber++
-  activePlayer = 'X'
-  activeGame = true
+  store.activePlayer = 'X'
+  store.activeGame = true
   // clear the array for a new game
-  gameBoard = ['', '', '', '', '', '', '', '', '']
+  store.gameBoard = ['', '', '', '', '', '', '', '', '']
 
   $('#game-alert-text').html('Waiting for X to make a play!')
 }
 
 // check to see if the array is full... this would indicate the game is over!
 const arrayIsFull = function () {
-  return gameBoard.some(el => el === '')
+  return store.gameBoard.some(el => el === '')
 }
 
 const calcPercentage = function (arr, total) {
@@ -64,12 +65,12 @@ const checkWinningCombos = function () {
   winningCombos.forEach(el => {
     newArray = []
     el.forEach(item => {
-      newArray.push(gameBoard[item])
+      newArray.push(store.gameBoard[item])
     })
     if ((newArray[0] === newArray[1]) && (newArray[1] === newArray[2]) && (newArray[0] !== '')) {
       // someone has won the game!
-      activeGame = false
-      winner = activePlayer
+      store.activeGame = false
+      winner = store.activePlayer
       messageText = `Game Over!  ${winner} has won this game!`
       if (winner === 'X') {
         store.record[0]++
@@ -78,10 +79,10 @@ const checkWinningCombos = function () {
         store.record[1]++
         return calcPercentage(store.record, store.gameNumber)
       }
-    } else if (!arrayIsFull() && (activeGame)) {
+    } else if (!arrayIsFull() && (store.activeGame)) {
       // If checkFullArray returns TRUE, then the array is not full and the game is NOT over
       messageText = 'Game Over!  This game has ended in a tie!'
-      activeGame = false
+      store.activeGame = false
       return calcPercentage(store.record, store.gameNumber)
     }
   })
@@ -90,17 +91,17 @@ const checkWinningCombos = function () {
 const onClickedBox = function () {
   // check that the player selected a valid space
   // ** The game must be active, and the space selected must be empty
-  if ((activeGame) && (gameBoard[event.target.id] === '')) {
+  if ((store.activeGame === true) && (store.gameBoard[event.target.id] === '')) {
     // Manipulate the DOM to place the active player symbol in the selected box
-    gameBoard[event.target.id] = activePlayer
+    store.gameBoard[event.target.id] = store.activePlayer
     // clear any previous alerts
 
-    if (activePlayer === 'X') {
+    if (store.activePlayer === 'X') {
       $(`#contents-${event.target.id}`).css('color', '#CB5D15')
-    } else if (activePlayer === 'O') {
+    } else if (store.activePlayer === 'O') {
       $(`#contents-${event.target.id}`).css('color', '#1583CB')
     }
-    $(`#contents-${event.target.id}`).html(`${activePlayer}`)
+    $(`#contents-${event.target.id}`).html(`${store.activePlayer}`)
 
     checkWinningCombos()
 
@@ -110,9 +111,9 @@ const onClickedBox = function () {
       game: {
         cell: {
           index: `${event.target.id}`,
-          value: `${activePlayer}`
+          value: `${store.activePlayer}`
         },
-        over: activeGame
+        over: store.activeGame
       }
     }
 
@@ -121,18 +122,17 @@ const onClickedBox = function () {
       .then(onUpdateGameSuccess)
       .catch(onUpdateGameFailure)
 
-    activePlayer === 'X' ? activePlayer = 'O' : activePlayer = 'X'
-
-    if (activeGame) {
-      messageText = `Waiting for ${activePlayer} to make a play...`
+    store.activePlayer === 'X' ? store.activePlayer = 'O' : store.activePlayer = 'X'
+    if (store.activeGame) {
+      messageText = `Waiting for ${store.activePlayer} to make a play...`
+      $('#game-alert-text').html(messageText)
     }
 
     // if not, send an error
-  } else if ((activeGame) && (gameBoard[event.target.id] !== '')) {
+  } else if ((store.activeGame) && (store.gameBoard[event.target.id] !== '')) {
     messageText = 'Spot already take - please select another spot'
+    $('#game-alert-text').html(messageText)
   }
-
-  $('#game-alert-text').html(messageText)
 }
 
 const onUpdateGameSuccess = function () {

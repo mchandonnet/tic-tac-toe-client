@@ -22,7 +22,6 @@ $(() => {
   })
 
   $('#anchor-login').on('click', function () {
-    $('#registration-result').html('')
     events.resetHTML()
     events.resetForms()
     events.views(false, true, false, false, false)
