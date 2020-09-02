@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+      <title>SEI Project 1 // Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+      <!--- This style block was added here to prevent the flickering of hidden content when the page loads-->
+     <div id="loadOverlay" style="background-color:#ffffff; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
+
+    </head>
+
+    
+    <body>
+      
+      <!-- Being Navigation section -->
+      <nav id="navigation">
+        <div class="row nav">
+          <div class="col-12">
+            <ul>              
+              <li><a href="#" id="btn-game">current Game</a></li>
+              <li><a href="#" id="btn-show-games">show all games</a></li>
+              <li><a href="#" id="btn-change-password">change password</a></li>
+              <li><a href="#" id="btn-logout">logout</a></li>
+            </ul>
+          </div>
+          <div class="col-12" id="api-failure"></div>
+        </div>
+      </nav>
+  
+
+      <!-- BEGIN REGISTER FORM SECTION -->
+      <section id="register-section">      
+        <form name="register-form" id="register-form">          
+          <div class="container">
+
+            <div class="row">
+              <div class="accent-div-top col-12">Register User</div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="email" placeholder="example.domain.com" name="credentials[email]" id="register-email"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="password" name="credentials[password]" id="register-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="confirm password" name="credentials[password_confirmation]" id="register-confirmation"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><p id="registration-result"></p></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="submit" name="register-submit" value="Create User"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+
+            <div class="row">
+              <div class="accent-div-bottom login col-12"><a href="#" id="anchor-login">Already a user?  Click here to login</a></div>
+            </div>
+
+
+          </div>
+        </form> 
+      </section>
+      <!-- END REGISTER FORM SECTION --> 
+       
+      
+
+      <!-- BEGIN LOGIN FORM SECTION -->
+      <section id="login-secion">
+        <form name="login-form" id="login-form">
+        
+            <div class="container">
+
+            <div class="row">
+              <div class="accent-div-top col-12">User login</div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="email" placeholder="example.domain.com" name="credentials[email]" id="login-email"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="password" name="credentials[password]" id="login-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><p id="login-result"></p></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="submit" name="login-submit" value="Sign In"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12">
+                <a href="#" id="anchor-forgot-pw"><!-- Forgot username -or- password? --></a></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="accent-div-bottom login col-12"><a href="#" id="anchor-register-user">Click to register new user</a></div>
+            </div>
+
+          </div>
+
+        </form>
+      </section>
+      <!-- END LOGIN FORM SECTION -->
+
+      
+      <!-- START CHANGE PASSWORD SECTION-->
+      <section id="change-password-section">
+        <form name="change-password-form" id="change-password-form">        
+          <div class="container">
+
+            <div class="row">
+              <div class="accent-div-top col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12">CHANGE PASSWORD</div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="current password" name="passwords[old]" id="old-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="password" placeholder="new password" name="passwords[new]" id="new-password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><p id="change-password-result"></p></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"><input type="submit" name="change-password" value="change password"></div>
+            </div>
+
+            <div class="row">
+              <div class="login col-12"></div>
+            </div>
+
+            <div class="row">
+              <div class="accent-div-bottom login col-12"><a href="#" id="anchor-back-to-game">Click to return to the game</a></div>
+            </div>
+
+          </div>
+        </form>
+      </section>
+      <!-- END CHANGE PASSWORD SECTION -->
+        
+
+
+        
+      <!-- Begin Game Board -->
+      <section id="game-board">
+        
+        <div class="container" id="tic-tac-toe-board">
+          
+          <div class="row">
+              <div class="game-board-divs top-left col-4" id="0"><p id="contents-0"></p></div>
+              <div class="game-board-divs top-mid col-4" id="1"><p id="contents-1"></div>
+              <div class="game-board-divs top-right col-4" id="2"><p id="contents-2"></div>
+          </div>
+
+          <div class="row">
+            <div class="game-board-divs mid-left col-4" id="3"><p id="contents-3"></div>
+            <div class="game-board-divs col-4" id="4"><p id="contents-4"></div>
+            <div class="game-board-divs mid-right col-4" id="5"><p id="contents-5"></div>
+          </div>
+
+          <div class="row">
+            <div class="game-board-divs bot-left col-4" id="6"><p id="contents-6"></p></div>
+            <div class="game-board-divs bot-mid col-4" id="7"><p id="contents-7"></p></div>
+            <div class="game-board-divs bot-right col-4" id="8"><p id="contents-8"></p></div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 game-alert-text" id="game-alert-text" class="col-12">Click new game to start...</div>
+          </div>
+          
+
+          <div class="container scoreboard-container" id="scoreboard-section">
+        
+            <div class="row">
+              <div class="col-3 scoreboard scoreboard-top"></div>
+              <div class="col-6 scoreboard scoreboard-top">Scoreboard</div>
+              <div class="col-3 scoreboard scoreboard-top"><a href="#" id="btn-new-game">New Game</a></div>
+            </div>            
+
+            <div class="row">
+              <div class="col-3 scoreboard scoreboard-header"></div>
+              <div class="col-2 scoreboard scoreboard-header x-score">X</div>
+              <div class="col-2 scoreboard scoreboard-header o-score">O</div>
+              <div class="col-2 scoreboard scoreboard-header tie-score">Tie</div>
+              <div class="col-3 scoreboard scoreboard-header"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-3 scoreboard"></div>
+              <div class="col-2 scoreboard score" id="x-score">--</div>
+              <div class="col-2 scoreboard score" id="o-score">--</div>
+              <div class="col-2 scoreboard score" id="tie-score">--</div>
+              <div class="col-3 scoreboard"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-3 scoreboard scoreboard-header"></div>
+              <div class="col-2 scoreboard scoreboard-header perc" id="x-percentage">--</div>
+              <div class="col-2 scoreboard scoreboard-header perc" id="o-percentage">--</div>
+              <div class="col-2 scoreboard scoreboard-header perc" id="tie-percentage">--</div>
+              <div class="col-3 scoreboard scoreboard-header"></div>
+            </div>
+
+            <div class="row">
+              <div class="scoreboard scoreboard-spacer"></div>
+            </div>
+            
+            </div>
+
+          </div>         
+
+      </section>
+      <!-- END Game Board -->
+
+
+        
+      <!-- BEGIN section for displaying Old Games-->
+      <section id="old-games">
+        <div>
+
+          <div class="row">
+            <div class="col-12">
+
+              <div class="row" id="small-games"></div>
+                
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <!-- END section for displaying Old Games-->
+
+        
+
+
+
+
+
+
+    </body>
+</html>
+
